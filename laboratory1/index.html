@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // Task 1:
+
+        let aNumber = [7,6,1,9,17,29]
+
+        function isOdd (number) {
+            return new Promise ((resolve, reject) => {
+                if (number % 2 == 0) {
+                    console.log ("Rejected", number);
+                }
+                else {
+                    console.log ("Resolved", number);
+                }
+            });
+        }
+
+        function Iteration(list) {
+            for (let i = 0; i < list.length; i++) {
+                isOdd(list[i]);
+            }
+        }
+
+        Iteration(aNumber);
+
+        // Task 2:
+
+        function getRandomCharacter(){
+            return new Promise ((resolve, reject) => {
+                setTimeout(() => {
+
+                    let list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                    let randomPick = Math.floor (Math.random() * list.length);
+
+                    resolve (list[randomPick]);
+                }, 500);
+            });
+        }
+
+        getRandomCharacter()
+
+        .then(character => {
+            console.log ("Resolved character: ", character);
+        })
+        .catch(error => {
+            console.log ("Rejected character: ", error)
+        });
+
+        // Task 3:
+
+        function getData(){
+            return new Promise ((resolve, reject) => {
+                setTimeout(() => {
+
+                    let random = Math.floor (Math.random() * 200);
+
+                    reject (random);
+                }, 500);
+            });
+        }
+
+        getData()
+
+        .then(character => {
+            console.log ("Resolved character: ", character);
+        })
+        .catch(error => {
+            console.log ("Rejected character: ", error)
+        });
+
+        // Task 4:
+
+        function rejectResolve() {
+        return new Promise((reject, resolve)=> {
+            setTimeout(()=> {
+                for (let i = 0; i < 2; i++){
+                if (i === 1){
+                    console.log("Resolve Function 4");
+                } else {
+                    console.log("Reject Function 4");
+                }
+            }
+            }, 500);
+            
+        });
+    }
+
+    rejectResolve();
+
+    </script>
+    
+</body>
+</html>
